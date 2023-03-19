@@ -1,3 +1,11 @@
+/*
+ * @Author: yowayimono 3485000346@qq.com
+ * @Date: 2023-03-18 09:29:25
+ * @LastEditors: yowayimono 3485000346@qq.com
+ * @LastEditTime: 2023-03-19 10:38:35
+ * @FilePath: /Myserver/http/httpresponse.h
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 #ifndef HTTPRESPONSE_H
 #define HTTPRESPONSE_H
 
@@ -50,7 +58,7 @@ private:
     char* mmFile_;//文件内存映射的指针
     struct stat mmFileStat_;//文件的状态信息
 
-    std::unordered_map<std::string,int> post_;//请求表单数据
+    std::unordered_map<std::string,int> post__;//请求表单数据
     //分别表示文件后缀名，响应状态吗，响应状态码对应的路径的映射表
     static const std::unordered_map<std::string,std::string> SUFFIX_TYPE;
     static const std::unordered_map<int,std::string> CODE_STATUS;
