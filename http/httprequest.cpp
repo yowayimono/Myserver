@@ -67,26 +67,26 @@ std::string& HttpRequest::path(){
     return path_;
 }
 
-bool HttpRequest::IsKeepAlive() const{
+bool HttpRequest::IsKeepAlive() const{//检测是否保持长链接
     if(header_.count("Connection")==1){
         return header_.find("Connection")->second=="keep-alive"&&version_=="1.1";
     }
-    return false;
+    return false;//只有1.1版本支持长链接
 }
 
 bool HttpRequest::ParseRequestLine_(const string &line)
 {
-    regex patten("^([^ ]*) ([^ ]*) HTTP/([^ ]*)$");
+    regex patten("^([^ ]*) ([^ ]*) HTTP/([^ ]*)$");//匹配请求行
     smatch subMatch;
-    if (regex_match(line, subMatch, patten))
+    if (regex_match(line, subMatch, patten))//匹配成功，保存到subMatch
     {
         method_ = subMatch[1];
         path_ = subMatch[2];
         version_ = subMatch[3];
-        state_ = HEADERS;
+        state_ = HEADERS;//状态转移
         return true;
     }
-    cout << "RequestLine Error" << endl;
+    cout << "RequestLine Error" << endl;//匹配失败
     return false;
 }
 
